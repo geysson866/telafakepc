@@ -1,0 +1,440 @@
+@use "colors";
+
+/*---------------------------GERAL---------------------------*/
+.container {
+  background-color: colors.$text-secondary;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  max-width: 1130px;
+
+  svg {
+    cursor: pointer;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 0 auto;
+  }
+}
+
+/*----------CAMINHO----------*/
+.containerCaminho {
+  display: none;
+
+  @media (min-width: 768px) {
+    align-items: center;
+    display: flex;
+    padding: 1rem 0 2rem 1rem;
+    position: relative;
+    max-width: 1150px;
+
+    svg {
+      font-size: 0.7rem;
+      margin: 0 0.5rem;
+    }
+
+    span {
+      cursor: pointer;
+      font-size: 0.65rem;
+
+      &:before {
+        bottom: 0;
+        content: "";
+        height: 1px;
+        position: absolute;
+        width: 0;
+
+        &:hover {
+          border: 1px colors.$text-primary solid;
+          width: 100%;
+        }
+      }
+
+      &:last-child {
+        color: colors.$background-primary;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    height: 20px;
+  }
+
+  @media (min-width: 1400px) {
+    height: 25px;
+
+    span {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/*----------PRODUTO----------*/
+.containerProduto {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 0;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    padding: 0 0.625rem;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 410px;
+  }
+}
+
+/*----------IMAGEM----------*/
+.containerImagem {
+  background-color: colors.$text-secondary;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    justify-items: center;
+    gap: 1rem;
+  }
+}
+
+.containerAdicional {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+}
+
+.imagemMini {
+  cursor: pointer;
+  height: 55px;
+  position: relative;
+  width: 55px;
+
+  @media (min-width: 1024px) {
+    height: 75px;
+    width: 75px;
+  }
+}
+
+.imagemMiniAtiva {
+  opacity: 0.5;
+}
+
+.imagemPrincipal {
+  cursor: pointer;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  width: 400px;
+
+  @media (min-width: 650px) {
+    height: 450px;
+    width: 450px;
+  }
+
+  @media (min-width: 768px) {
+    height: 300px;
+    width: 300px;
+  }
+
+  @media (min-width: 800px) {
+    height: 350px;
+    width: 350px;
+  }
+
+  @media (min-width: 900px) {
+    height: 450px;
+    width: 450px;
+  }
+
+  @media (min-width: 1024px) {
+    height: 500px;
+    width: 500px;
+  }
+}
+
+/*---PROMO---*/
+.promo {
+  align-self: center;
+  align-items: center;
+  background-color: colors.$text-terceary;
+  border-radius: 6px;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px;
+  z-index: 200;
+
+  p {
+    color: colors.$text-secondary;
+    font-size: 0.75rem;
+    margin: 0;
+  }
+}
+
+/*----------INFORMAÇÕES----------*/
+.produtoInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.5rem;
+
+  @media (min-width: 1024px) {
+    padding: 0 1rem;
+  }
+}
+
+/*---NOME---*/
+.produtoNome {
+  color: colors.$text-primary;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  margin: 0;
+  padding-bottom: 1.2rem;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+}
+
+/*---INFO ADICIONAL---*/
+.containerInfoAdicional {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  padding: 1rem 0 0.5rem;
+}
+
+.infoAdicional {
+  font-size: 0.75rem;
+
+  span {
+    &:first-child {
+      font-weight: 300;
+    }
+
+    &:last-child {
+      font-weight: 600;
+    }
+  }
+}
+
+/*---PRECO---*/
+.produtoPreco {
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 0 0.3rem;
+}
+
+.containerPrecos {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.precoAntigo {
+  color: rgb(160, 160, 160);
+  font-size: 0.75rem;
+  text-decoration: line-through;
+}
+
+.precoPrazo {
+  align-self: center;
+  color: colors.$text-terceary;
+  font-size: 1.375rem;
+  font-weight: 600;
+
+  p {
+    margin: 0;
+  }
+}
+
+.precoDetalhe {
+  color: colors.$text-primary;
+  padding: 0 1rem;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+/*---PARCELAMENTO---*/
+.containerParcelamento {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  h1 {
+    color: colors.$text-primary;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  p {
+    color: colors.$text-primary;
+    font-size: 0.8rem;
+    margin: 0;
+    text-decoration: underline;
+  }
+}
+
+.parcelamento {
+  align-items: center;
+  background-color: colors.$background-secondary;
+  color: colors.$text-secondary;
+  display: grid;
+  font-size: 0.6rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, auto);
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+
+  p {
+    text-decoration: none;
+    text-align: left;
+  }
+
+  span {
+    font-weight: 700;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 0.7rem;
+  }
+}
+
+/*---COMPRAR---*/
+.comprar {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1.3rem;
+  text-align: center;
+
+  button {
+    background-color: colors.$background-primary;
+    border: none;
+    color: colors.$text-secondary;
+    cursor: pointer;
+    font-family: "Poppins";
+    font-size: 1.1rem;
+    height: 50px;
+    width: 100%;
+
+    &:hover {
+      background-color: colors.$text-terceary;
+    }
+  }
+}
+
+.comprarQtde {
+  input {
+    border: 1px solid colors.$border-primary;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 100%;
+    text-align: center;
+    width: 75px;
+  }
+}
+
+/*-------------------DESCRIÇÃO--------------------*/
+.containerDescricao {
+  border-top: 2px solid #e4e4e4;
+  display: flex;
+  flex-direction: column;
+  font-family: "Work Sans", sans-serif;
+  margin: 5rem 1rem;
+  padding-top: 2rem;
+
+  @media (min-width: 1200px) {
+    margin: 5rem 0;
+  }
+}
+
+.descricaoTitulo {
+  h1 {
+    color: colors.$text-primary;
+    font-size: 1.3rem;
+    margin: 0;
+  }
+}
+
+/*----- ESPECIFICAÇAÇÕES -----*/
+.containerEspec {
+  font-family: "Poppins";
+  padding: 3.45rem 0rem 4.5rem;
+}
+
+.espec {
+  padding-bottom: 0.875rem;
+
+  h1 {
+    font-size: 0.875rem;
+    margin: 0;
+    padding-bottom: 0.3rem;
+  }
+}
+
+.especDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  p {
+    font-size: 0.875rem;
+    font-weight: 300;
+    margin: 0;
+  }
+}
+/*----- VER MAIS -----*/
+.containerVerMais {
+  display: none;
+
+  @media (min-width: 970px) {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto 7rem;
+    max-width: 1200px;
+
+    h1 {
+      color: colors.$background-primary;
+      font-family: "Poppins", sans-serif;
+      font-size: 1.4rem;
+      text-align: center;
+    }
+  }
+}
+
+.itemVerMais {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  gap: 1rem;
+
+  img {
+    height: 150px !important;
+    width: 150px !important;
+  }
+
+  @media (min-width: 1020px) {
+    gap: 2rem;
+  }
+}

@@ -1,0 +1,539 @@
+@use "colors";
+
+/*------------------------------GERAL------------------------------*/
+.geral {
+  background-color: colors.$background-secondary;
+}
+
+/*----------CARRINHO SEM ITENS----------*/
+.semItem {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat";
+  gap: 3rem;
+  padding: 2rem 0 5rem;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 3rem 0 0;
+  }
+
+  button {
+    background-color: colors.$background-terceary;
+    border: none;
+    border-radius: 5px;
+    color: colors.$text-secondary;
+    font-size: 1rem;
+    height: 40px;
+    width: 300px;
+  }
+
+  @media (min-width: 900px) {
+    font-size: 2rem;
+    margin: 0 auto;
+    padding: 5rem 0 9rem;
+    width: 900px;
+
+    h2 {
+      font-size: 3rem;
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    width: 950px;
+  }
+
+  @media (min-width: 1600px) {
+    width: 1100px;
+  }
+}
+
+.semItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  svg {
+    height: 50px;
+  }
+}
+
+/*----------CARRINHO COM ITENS----------*/
+.comItem {
+  font-family: "Montserrat";
+  padding: 3rem 1.5rem 0;
+
+  h2 {
+    margin: 0;
+    padding: 2rem 0 0;
+  }
+
+  @media (min-width: 500px) {
+    margin: 0 auto;
+    width: calc(500px + 1rem);
+  }
+
+  @media (min-width: 768px) {
+    width: calc(750px + 1rem);
+  }
+
+  @media (min-width: 900px) {
+    display: grid;
+    gap: 0.5rem 1rem;
+    grid-template-areas:
+      "titulo titulo"
+      "item valor"
+      "limpar valor"
+      "frete valor";
+    padding: 3.5rem 0 0;
+    width: 100%;
+
+    h2 {
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 970px) {
+    width: calc(960px + 1.5rem);
+  }
+
+  @media (min-width: 1200px) {
+    width: calc(1040px + 4.5rem);
+  }
+}
+
+.titulo {
+  grid-area: titulo;
+}
+
+.itemCarrinho {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem 0;
+
+  @media (min-width: 900px) {
+    gap: 0.8rem 0;
+  }
+}
+
+/*-----ITEM-----*/
+.containerItem {
+  background-color: colors.$text-secondary;
+  border: 1px solid colors.$border-primary;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075);
+  grid-area: item;
+  padding: 0.2rem;
+  position: relative;
+  overflow: hidden;
+
+  button {
+    background-color: colors.$text-secondary;
+    border: none;
+    color: colors.$text-primary;
+    cursor: pointer;
+  }
+
+  svg {
+    &:hover {
+      color: colors.$border-primary;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 900px) {
+    align-items: center;
+    border: none;
+    border-radius: 6px;
+    padding: 0 0.5rem;
+    width: 100%;
+  }
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 70px 1fr 20px;
+  gap: 0.6rem;
+
+  @media (min-width: 900px) {
+    align-items: center;
+    gap: 0.4rem;
+    grid-template-columns: 50px 1fr 0.3fr 80px 160px 30px;
+    padding: 0.5rem 0.2rem;
+  }
+}
+
+.itemImagem {
+  @media (min-width: 900px) {
+    width: 50px;
+  }
+}
+
+.itemDescricao {
+  cursor: pointer;
+  padding: 0.5rem 0 0;
+
+  p {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    display: -webkit-box;
+    line-clamp: 2;
+    overflow: hidden;
+    padding: 0;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    p {
+      font-size: 0.75rem;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.itemDeletar {
+  svg {
+    color: colors.$border-primary;
+
+    &:hover {
+      color: colors.$text-terceary;
+    }
+  }
+  @media (min-width: 900px) {
+    align-self: start;
+    justify-self: flex-end;
+  }
+}
+
+.containerInfo {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem 0;
+
+  @media (min-width: 900px) {
+    font-size: 0.75rem;
+  }
+}
+
+.itemAcoes {
+  align-items: center;
+  display: flex;
+  font-family: Helvetica, sans-serif;
+  padding: 0.3rem 0;
+  width: 100px;
+
+  span {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0 0.4rem;
+  }
+
+  svg {
+    color: colors.$border-primary;
+  }
+
+  @media (min-width: 900px) {
+    justify-content: center;
+    padding: 0.3 1rem;
+    width: 70px;
+
+    span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.itemPrecos {
+  align-items: center;
+  display: flex;
+
+  p {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    justify-self: flex-end;
+  }
+}
+
+.containerPromo {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.promo {
+  align-items: center;
+  animation: 1.2s pisca ease-in-out infinite;
+  background-color: colors.$background-primary;
+  display: flex;
+  gap: 0.2rem;
+  height: 18px;
+  justify-content: center;
+  width: 60px;
+
+  p {
+    color: colors.$text-secondary;
+    font-size: 0.5rem;
+    margin: 0;
+  }
+}
+
+.precoNormal {
+  color: gray;
+  font-size: 0.8rem;
+  text-decoration: line-through;
+
+  @media (min-width: 900px) {
+    font-size: 0.7rem;
+  }
+}
+
+.precoPromo {
+  color: colors.$background-primary;
+  font-size: 0.8rem;
+  @media (min-width: 900px) {
+    font-size: 0.7rem;
+  }
+}
+
+.precoSemPromo {
+  color: colors.$background-primary;
+  font-size: 0.8rem;
+
+  @media (min-width: 900px) {
+    font-size: 0.7rem;
+    width: 200px;
+    text-align: right;
+  }
+}
+
+@keyframes pisca {
+  0% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*-----LIMPAR CARRINHO----*/
+.carrinhoLimpar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 0 2.5rem;
+
+  button {
+    background-color: colors.$background-primary;
+    color: colors.$text-secondary;
+    cursor: pointer;
+    border: colors.$text-primary;
+    font-family: roboto;
+    font-size: 1rem;
+    height: 35px;
+    width: 210px;
+
+    &:hover {
+      background-color: colors.$text-terceary;
+    }
+  }
+
+  @media (min-width: 900px) {
+    grid-area: limpar;
+    padding: 0 0 2rem;
+
+    button {
+      font-size: 0.6rem;
+      height: 25px;
+      width: 120px;
+    }
+  }
+}
+
+/*-----FRETE-----*/
+.containerFrete {
+  background-color: colors.$text-secondary;
+  border: 1px solid colors.$border-primary;
+  padding: 1rem 0;
+
+  h3 {
+    margin: 0 1rem;
+  }
+
+  @media (min-width: 900px) {
+    align-items: center;
+    border: none;
+    display: flex;
+    gap: 2rem;
+    grid-area: frete;
+    justify-content: space-between;
+    margin: 0rem 0 3rem;
+    padding: 0.7rem 1rem;
+
+    h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}
+
+.freteForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem;
+
+  input {
+    height: 35px;
+    padding-left: 10px;
+  }
+
+  button {
+    background-color: colors.$background-primary;
+    border: none;
+    color: colors.$text-secondary;
+    cursor: pointer;
+    height: 35px;
+    margin-left: 0.5rem;
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:active {
+      background-color: colors.$background-terceary;
+    }
+  }
+
+  @media (min-width: 900px) {
+    display: flex;
+    justify-self: end;
+    margin: 0.5rem 0;
+
+    input {
+      width: 220px;
+    }
+
+    button {
+      margin: 0;
+      width: 80px;
+    }
+  }
+}
+
+/*-----PREÇOS FINAIS-----*/
+.precoFinalizar {
+  @media (min-width: 900px) {
+    grid-area: valor;
+  }
+}
+
+.containerPrecosFinal {
+  background-color: colors.$text-secondary;
+  color: colors.$text-primary;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat";
+  margin: 2.5rem 0 0rem;
+
+  p {
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    margin: 0;
+    width: 300px;
+  }
+}
+
+.precosProdutos {
+  border-bottom: 1px colors.$background-secondary solid;
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  padding: 1rem 0.8rem;
+}
+
+.precoFrete {
+  border-bottom: 1px colors.$background-secondary solid;
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem 1rem;
+}
+
+.precoTotal {
+  background-color: #e5f5e5;
+  display: flex;
+  font-size: 1rem;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: 1rem 0.8rem;
+}
+
+.finalizarCompra {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 6rem;
+
+  button {
+    background-color: colors.$background-terceary;
+    border: none;
+    color: colors.$text-secondary;
+    cursor: pointer;
+    height: 60px;
+    width: 100%;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+
+    &:disabled {
+      background-color: gray;
+    }
+  }
+
+  svg {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+  }
+
+  @media (min-width: 900px) {
+    button {
+      border: 1px solid colors.$border-primary;
+      height: 40px;
+
+      p {
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      svg {
+        font-size: 0.9rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

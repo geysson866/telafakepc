@@ -1,0 +1,465 @@
+@use "colors";
+
+.adminLayout {
+  min-height: 100vh;
+  background-color: colors.$background-secondary;
+  font-family: "Montserrat", sans-serif;
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: colors.$background-secondary;
+}
+
+.loginForm {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: colors.$text-primary;
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid colors.$border-primary;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 1rem;
+    background-color: colors.$background-primary;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: colors.$text-terceary;
+    }
+  }
+}
+
+.dashboard {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    color: colors.$text-primary;
+    margin: 0;
+  }
+}
+
+.logoutBtn {
+  padding: 0.5rem 1rem;
+  background-color: colors.$text-terceary;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid colors.$border-primary;
+
+  button {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: colors.$text-primary;
+
+    &.active {
+      border-bottom-color: colors.$background-primary;
+      color: colors.$background-primary;
+      font-weight: 600;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+.content {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+// Orders List Styles
+.ordersList {
+  h2 {
+    margin-bottom: 2rem;
+    color: colors.$text-primary;
+  }
+}
+
+.ordersGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+}
+
+.orderCard {
+  border: 1px solid colors.$border-primary;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background: white;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.orderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  h3 {
+    margin: 0;
+    color: colors.$text-primary;
+  }
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  &.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+
+  &.completed {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+
+  &.failed {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+}
+
+.orderInfo {
+  margin-bottom: 1rem;
+
+  p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+  }
+}
+
+.cardInfo, .pixInfo {
+  background-color: colors.$background-secondary;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+
+  h4 {
+    margin: 0 0 0.5rem 0;
+    color: colors.$text-primary;
+  }
+
+  p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+  }
+}
+
+.orderActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+}
+
+.viewBtn {
+  background-color: colors.$background-primary;
+  color: white;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.approveBtn {
+  background-color: colors.$background-terceary;
+  color: white;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.rejectBtn {
+  background-color: colors.$text-terceary;
+  color: white;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+// Modal Styles
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid colors.$border-primary;
+
+  h3 {
+    margin: 0;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: colors.$text-primary;
+  }
+}
+
+.modalBody {
+  padding: 1.5rem;
+}
+
+.customerDetails, .itemsList, .paymentDetails {
+  margin-bottom: 2rem;
+
+  h4 {
+    margin-bottom: 1rem;
+    color: colors.$text-primary;
+  }
+
+  p {
+    margin: 0.5rem 0;
+  }
+}
+
+.orderItem {
+  background-color: colors.$background-secondary;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+// PIX Config Styles
+.pixConfig {
+  h2 {
+    margin-bottom: 2rem;
+    color: colors.$text-primary;
+  }
+}
+
+.configCard {
+  background: white;
+  border: 1px solid colors.$border-primary;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.configHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    margin: 0;
+    color: colors.$text-primary;
+  }
+}
+
+.editBtn {
+  padding: 0.5rem 1rem;
+  background-color: colors.$background-primary;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.configForm {
+  .formGroup {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: colors.$text-primary;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid colors.$border-primary;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+}
+
+.saveBtn {
+  background-color: colors.$background-terceary;
+  color: white;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.testBtn {
+  background-color: colors.$background-primary;
+  color: white;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.configDisplay {
+  p {
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+
+  .active {
+    color: colors.$background-terceary;
+    font-weight: 600;
+  }
+
+  .inactive {
+    color: colors.$text-terceary;
+    font-weight: 600;
+  }
+}
+
+.instructions {
+  background-color: colors.$background-secondary;
+  padding: 2rem;
+  border-radius: 8px;
+
+  h3 {
+    margin-top: 0;
+    color: colors.$text-primary;
+  }
+
+  ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+
+    li {
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+.apiInfo {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid colors.$border-primary;
+
+  h4 {
+    margin-bottom: 1rem;
+    color: colors.$text-primary;
+  }
+
+  p {
+    margin: 0.5rem 0;
+    font-family: monospace;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+}

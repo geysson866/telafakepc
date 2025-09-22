@@ -1,0 +1,105 @@
+@use "colors";
+
+/*-------------------------GERAL-------------------------*/
+.container {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  gap: 1rem;
+  justify-items: center;
+  position: relative;
+  width: 100%;
+
+  p {
+    padding: 0 0.5rem;
+    text-align: start;
+  }
+}
+
+/*----------IMAGEM----------*/
+.imagem {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  position: relative;
+  height: 180px;
+  width: 180px;
+}
+/*----------PROMO----------*/
+.promo {
+  align-items: center;
+  background-color: colors.$text-terceary;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  left: 5px;
+  position: absolute;
+  top: 5px;
+  width: 100px;
+  z-index: 100;
+
+  p {
+    color: colors.$text-secondary;
+    font-size: 0.7rem;
+    margin: 0;
+  }
+}
+
+/*----------NOME----------*/
+.nome {
+  font-family: "Poppins";
+  height: 110px;
+  padding: 0 0.5rem;
+  text-align: center;
+  width: 100%;
+
+  h2 {
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  @media (min-width: 500px) {
+    height: 110px;
+  }
+}
+
+/*---PREÇOS---*/
+.containerPrecos {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.produtoPrecos {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.precoPrazo {
+  color: colors.$text-terceary;
+  font-size: 1.35rem;
+  padding-bottom: 0.2rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.precoDetalhe {
+  color: colors.$text-primary;
+  font-size: 0.7rem;
+
+  p {
+    margin: 0 1rem;
+    padding: 0;
+    text-align: center;
+  }
+}
