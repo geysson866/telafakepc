@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import AdminLayout from '../../components/Admin/AdminLayout';
 import OrdersList from '../../components/Admin/OrdersList';
 import PixConfig from '../../components/Admin/PixConfig';
+import ProductManager from '../../components/Admin/ProductManager';
 import styles from '../../styles/Admin.module.scss';
 
 export default function AdminDashboard() {
@@ -78,11 +79,18 @@ export default function AdminDashboard() {
           >
             Configuração PIX
           </button>
+          <button 
+            className={activeTab === 'products' ? styles.active : ''}
+            onClick={() => setActiveTab('products')}
+          >
+            Produtos
+          </button>
         </div>
 
         <div className={styles.content}>
           {activeTab === 'orders' && <OrdersList />}
           {activeTab === 'pix' && <PixConfig />}
+          {activeTab === 'products' && <ProductManager />}
         </div>
       </div>
     </AdminLayout>

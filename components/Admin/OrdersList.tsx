@@ -6,6 +6,14 @@ interface Order {
   customerName: string;
   customerEmail: string;
   customerCpf: string;
+  customerAddress?: {
+    street: string;
+    number: string;
+    neighborhood: string;
+    city: string;
+    state: string;
+    cep: string;
+  };
   items: any[];
   total: number;
   paymentMethod: 'credit_card' | 'pix';
@@ -78,6 +86,9 @@ export default function OrdersList() {
                 <p><strong>Cliente:</strong> {order.customerName}</p>
                 <p><strong>Email:</strong> {order.customerEmail}</p>
                 <p><strong>CPF:</strong> {order.customerCpf}</p>
+                {order.customerAddress && (
+                  <p><strong>Endereço:</strong> {order.customerAddress.street}, {order.customerAddress.number} - {order.customerAddress.neighborhood}</p>
+                )}
                 <p><strong>Total:</strong> {order.total.toLocaleString('pt-BR', {
                   style: 'currency',
                   currency: 'BRL'
@@ -147,6 +158,15 @@ export default function OrdersList() {
                 <p><strong>Nome:</strong> {selectedOrder.customerName}</p>
                 <p><strong>Email:</strong> {selectedOrder.customerEmail}</p>
                 <p><strong>CPF:</strong> {selectedOrder.customerCpf}</p>
+                {selectedOrder.customerAddress && (
+                  <div>
+                    <p><strong>Endereço Completo:</strong></p>
+                    <p>{selectedOrder.customerAddress.street}, {selectedOrder.customerAddress.number}</p>
+                    <p>{selectedOrder.customerAddress.neighborhood}</p>
+                    <p>{selectedOrder.customerAddress.city} - {selectedOrder.customerAddress.state}</p>
+                    <p>CEP: {selectedOrder.customerAddress.cep}</p>
+                  </div>
+                )}
               </div>
 
               <div className={styles.itemsList}>

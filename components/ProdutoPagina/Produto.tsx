@@ -47,6 +47,9 @@ function Produto(props: Props) {
   const [imagemSelec, setImagemSelec] = useState(1);
   const [parcelamento, setParcelamento] = useState(false);
   const [inputQtde, setInputQtde] = useState("1");
+  
+  // Imagem padrão para quando não há imagem disponível
+  const img3 = "/images/sample.jpg";
 
   function imgAtual() {
     if (imagemSelec === 2) {
@@ -144,7 +147,7 @@ function Produto(props: Props) {
               onClick={() => handleImageChange(3)}
             >
               <Image
-                src="/images/sample.jpg" // Coloque o caminho da imagem aqui
+                src={img3}
                 alt="testando"
                 layout="fill"
                 objectFit="contain"

@@ -23,6 +23,7 @@ function ComItens() {
   const [totalProdutos, setTotalProdutos] = useState(0);
   const [cep, setCep] = useState("");
   const [valorCep, setValorCep] = useState(0);
+  const [addressData, setAddressData] = useState<any>(null);
 
   useEffect(() => {
     if (cartStore.length === 0) {
@@ -66,6 +67,10 @@ function ComItens() {
     }
   }
 
+  function handleAddressFound(data: any) {
+    setAddressData(data);
+  }
+
   return (
     <>
       <div className={styles.titulo}>
@@ -96,6 +101,7 @@ function ComItens() {
         handleCepChange={handleCepChange}
         handleValidarCep={handleValidarCep}
         cep={cep}
+        onAddressFound={handleAddressFound}
       />
       <div className={styles.precoFinalizar}>
         <PrecoFinal valorCep={valorCep} totalProdutos={totalProdutos} />

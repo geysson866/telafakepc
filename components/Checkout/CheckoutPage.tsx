@@ -16,18 +16,49 @@ export default function CheckoutPage() {
   const [customerData, setCustomerData] = useState({
     name: '',
     email: '',
-    cpf: ''
+    cpf: '',
+    address: '',
+    number: '',
+    city: '',
+    state: '',
+    neighborhood: '',
+    cep: ''
   });
   const [step, setStep] = useState(1);
+  const [addressData, setAddressData] = useState<any>(null);
 
   const calculateTotal = () => {
     if (totalPrice.length === 0) return 0;
     return totalPrice.reduce((total, item) => total + item.valorTotal, 0);
   };
 
+  const handleCepChange = async (cep: string) => {
+    const cleanCep = cep.replace(/\D/g, '');
+    if (cleanCep.length === 8) {
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+        const data = await response.json();
+        
+        if (!data.erro) {
+          setAddressData(data);
+          setCustomerData(prev => ({
+            ...prev,
+            address: data.logradouro,
+            city: data.localidade,
+            state: data.uf,
+            neighborhood: data.bairro,
+            cep: cep
+          }));
+        }
+      } catch (error) {
+        console.error('Erro ao buscar CEP:', error);
+      }
+    }
+  };
+
   const handleCustomerSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (customerData.name && customerData.email && customerData.cpf) {
+    if (customerData.name && customerData.email && customerData.cpf && customerData.address && customerData.number) {
       setStep(2);
     }
   };
@@ -39,6 +70,14 @@ export default function CheckoutPage() {
       customerName: customerData.name,
       customerEmail: customerData.email,
       customerCpf: customerData.cpf,
+      customerAddress: {
+        street: customerData.address,
+        number: customerData.number,
+        neighborhood: customerData.neighborhood,
+        city: customerData.city,
+        state: customerData.state,
+        cep: customerData.cep
+      },
       items: cartStore.map(item => ({
         id: item.id,
         name: item.name,
@@ -160,6 +199,80 @@ export default function CheckoutPage() {
               })}</span>
             </div>
           ))}
+            <div className={styles.formGroup}>
+              <label>CEP</label>
+              <input
+                type="text"
+                value={customerData.cep}
+                onChange={(e) => {
+                  const formatted = e.target.value.replace(/\D/g, '').replace(/(\d{5})(\d{3})/, '$1-$2');
+                  setCustomerData({...customerData, cep: formatted});
+                  handleCepChange(formatted);
+                }}
+                placeholder="00000-000"
+                maxLength={9}
+                required
+              />
+            </div>
+
+            {addressData && (
+              <>
+                <div className={styles.formGroup}>
+                  <label>Endereço</label>
+                  <input
+                    type="text"
+                    value={customerData.address}
+                    onChange={(e) => setCustomerData({...customerData, address: e.target.value})}
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Número</label>
+                  <input
+                    type="text"
+                    value={customerData.number}
+                    onChange={(e) => setCustomerData({...customerData, number: e.target.value})}
+                    placeholder="123"
+                    required
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label>Bairro</label>
+                  <input
+                    type="text"
+                    value={customerData.neighborhood}
+                    onChange={(e) => setCustomerData({...customerData, neighborhood: e.target.value})}
+                    required
+                  />
+                </div>
+
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label>Cidade</label>
+                    <input
+                      type="text"
+                      value={customerData.city}
+                      onChange={(e) => setCustomerData({...customerData, city: e.target.value})}
+                      required
+                    />
+                  </div>
+
+                  <div className={styles.formGroup}>
+                    <label>Estado</label>
+                    <input
+                      type="text"
+                      value={customerData.state}
+                      onChange={(e) => setCustomerData({...customerData, state: e.target.value})}
+                      maxLength={2}
+                      required
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+
           <div className={styles.total}>
             <strong>
               Total: {calculateTotal().toLocaleString('pt-BR', {
